@@ -22,10 +22,10 @@ export default function Pizzas({ navigation }) {
       });
   };
 
-  const deletePizza = async (e) => {
+  const deletePizza = async (e, pizzaid) => {
     e.stopPropagation();
     setLoad(true);
-    fetch("http://192.168.0.13/GreatPizza.API/main/Deletepizza/3", {
+    fetch("http://192.168.0.13/GreatPizza.API/main/Deletepizza/" + pizzaid, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -72,7 +72,7 @@ export default function Pizzas({ navigation }) {
                 type="font-awesome-5"
                 color="#f50"
                 onPress={(e) => {
-                  deletePizza(e);
+                  deletePizza(e, l.pizzaid);
                 }}
               />
             </ListItem>
