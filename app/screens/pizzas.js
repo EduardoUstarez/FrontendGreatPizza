@@ -22,22 +22,31 @@ export default function Pizzas({ navigation }) {
       });
   };
 
+  const deletePizza = async (e) => {
+    e.stopPropagation();
+    setLoad(true);
+    fetch("http://192.168.0.13/GreatPizza.API/main/Deletepizza/3", {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then(function (data) {
+        console.log(data);
+        setPizzas(data.pizzas);
+        setLoad(false);
+      });
+  };
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
       justifyContent: "center",
-    },
-    horizontal: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      padding: 0,
     },
   });
 
   return (
     <View>
       {load ? (
-        <View style={[styles.container, styles.horizontal]}>
+        <View tyle={styles.container}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (
@@ -62,7 +71,9 @@ export default function Pizzas({ navigation }) {
                 name="trash"
                 type="font-awesome-5"
                 color="#f50"
-                onPress={() => console.log("hello")}
+                onPress={(e) => {
+                  deletePizza(e);
+                }}
               />
             </ListItem>
           ))}
