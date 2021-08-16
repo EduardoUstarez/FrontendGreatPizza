@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ListItem, Avatar, Button, Icon } from "react-native-elements";
 
 export default function Pizzas({ navigation }) {
-  const [load, setLoad] = useState();
+  const [load, setLoad] = useState(true);
   const [pizzas, setPizzas] = useState({});
 
   useEffect(() => {
@@ -13,13 +13,12 @@ export default function Pizzas({ navigation }) {
   }, []);
 
   const loadData = async () => {
-    setLoad(true);
     fetch("http://192.168.0.13/GreatPizza.API/main/GetPizzas/")
       .then((response) => response.json())
       .then(function (data) {
+        console.log(data);
         setPizzas(data.pizzas);
         setLoad(false);
-        console.log(data);
       });
   };
 
@@ -31,7 +30,7 @@ export default function Pizzas({ navigation }) {
     horizontal: {
       flexDirection: "row",
       justifyContent: "space-around",
-      padding: 10,
+      padding: 0,
     },
   });
 
@@ -52,7 +51,7 @@ export default function Pizzas({ navigation }) {
               <Icon name="pizza-slice" type="font-awesome-5" color="#f81" />
               <ListItem.Content>
                 <ListItem.Title>{l.description}</ListItem.Title>
-                <ListItem.Subtitle>{l.subtitle}</ListItem.Subtitle>
+                <ListItem.Subtitle>Pizza</ListItem.Subtitle>
               </ListItem.Content>
               <Icon
                 raised
