@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { ListItem, Avatar, Text, Icon, Button } from "react-native-elements";
 
-export default function Pizzadetail() {
+export default function Pizzadetail({ route, navigation }) {
+  const { pizzaid } = route.params;
   const [load, setLoad] = useState(true);
   const [detail, setDetail] = useState({});
 
@@ -11,7 +12,9 @@ export default function Pizzadetail() {
   }, []);
 
   const loadData = async () => {
-    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/1")
+    console.log("id");
+    console.log(pizzaid);
+    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/" + pizzaid)
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);

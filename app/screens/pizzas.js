@@ -46,7 +46,11 @@ export default function Pizzas({ navigation }) {
             <ListItem
               key={l.pizzaid}
               bottomDivider
-              onPress={() => console.log({ i })}
+              onPress={() => {
+                navigation.navigate("PizzaDetail", {
+                  pizzaid: l.pizzaid,
+                });
+              }}
             >
               <Icon name="pizza-slice" type="font-awesome-5" color="#f81" />
               <ListItem.Content>
