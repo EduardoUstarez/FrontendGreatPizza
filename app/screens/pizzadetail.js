@@ -35,21 +35,6 @@ export default function Pizzadetail() {
     },
   });
 
-  const list = [
-    {
-      toppingid: 1,
-      description: "Hawaiian",
-    },
-    {
-      toppingid: 2,
-      description: "Peperoni",
-    },
-    {
-      toppingid: 3,
-      description: "Irish",
-    },
-  ];
-
   return (
     <View>
       {load ? (
