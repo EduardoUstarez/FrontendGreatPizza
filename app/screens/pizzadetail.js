@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, ActivityIndicator } from "react-native";
 import { ListItem, Avatar, Text, Icon, Button } from "react-native-elements";
 
+import ToppingItem from "../components/pizzas/PizzaItem";
+
 export default function Pizzadetail({ route, navigation }) {
   const { pizzaid } = route.params;
   const [load, setLoad] = useState(true);
@@ -80,25 +82,13 @@ export default function Pizzadetail({ route, navigation }) {
             {detail.pizzaDetail.description}
           </Text>
           {detail.pizzaDetail.toppings.map((l, i) => (
-            <ListItem
+            <ToppingItem
+              topping={l}
+              index={i}
+              pizzaid={pizzaid}
               key={l.toppingid}
-              bottomDivider
-              onPress={() => console.log({ i })}
-            >
-              <Icon name="dot-circle" type="font-awesome-5" color="#f95" />
-              <ListItem.Content>
-                <ListItem.Title>{l.description}</ListItem.Title>
-              </ListItem.Content>
-              <Icon
-                raised
-                name="trash"
-                type="font-awesome-5"
-                color="#f50"
-                onPress={(e) => {
-                  deleteToppingFromPizza(pizzaid, l.toppingid);
-                }}
-              />
-            </ListItem>
+              deleteToppingFromPizza={deleteToppingFromPizza}
+            ></ToppingItem>
           ))}
           <Button
             title="Add Topping"
