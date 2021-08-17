@@ -4,6 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ListItem, Avatar, Button, Icon, Input } from "react-native-elements";
 
+import ToppingItem from "../components/Toppings/ToppingItem";
+
 export default function Toppings({ route, navigation }) {
   const { pizzaid } = route.params;
   const [load, setLoad] = useState(true);
@@ -104,31 +106,15 @@ export default function Toppings({ route, navigation }) {
       ) : (
         <View>
           {toppings.map((l, i) => (
-            <ListItem
+            <ToppingItem
+              topping={l}
+              index={i}
+              pizzaid={pizzaid}
               key={l.toppingid}
-              bottomDivider
-              onPress={() => {
-                addToppingToPizza(pizzaid, l.toppingid);
-                navigation.navigate({
-                  name: "PizzaDetail",
-                  params: { toppingid: l.toppingid, pizzaid: pizzaid },
-                  merge: true,
-                });
-              }}
-            >
-              <ListItem.Content>
-                <ListItem.Title>{l.description}</ListItem.Title>
-              </ListItem.Content>
-              <Icon
-                raised
-                name="trash"
-                type="font-awesome-5"
-                color="#f50"
-                onPress={(e) => {
-                  deleteTopping(e, l.toppingid);
-                }}
-              />
-            </ListItem>
+              navigation={navigation}
+              deleteTopping={deleteTopping}
+              addToppingToPizza={addToppingToPizza}
+            ></ToppingItem>
           ))}
 
           <Input
