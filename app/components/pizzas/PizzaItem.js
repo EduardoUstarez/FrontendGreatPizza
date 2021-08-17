@@ -9,7 +9,6 @@ const PizzaItem = (props) => {
 
   return (
     <View>
-      {" "}
       <ListItem
         key={props.pizza.pizzaid}
         bottomDivider
