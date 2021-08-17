@@ -45,7 +45,7 @@ export default function Pizzadetail({ route, navigation }) {
   return (
     <View>
       {load ? (
-        <View style={styles.container}>
+        <View>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (

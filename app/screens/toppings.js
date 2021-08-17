@@ -35,7 +35,7 @@ export default function Toppings({ route, navigation }) {
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
-        setPizzas(data.toppings);
+        setToppings(data.toppings);
         setLoad(false);
       });
   };
@@ -99,9 +99,7 @@ export default function Toppings({ route, navigation }) {
   return (
     <View>
       {load ? (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <View>
           {toppings.map((l, i) => (
