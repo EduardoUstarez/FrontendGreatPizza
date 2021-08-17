@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ListItem, Avatar, Button, Icon, Input } from "react-native-elements";
+import React from "react";
+import { View } from "react-native";
+import { ListItem, Icon } from "react-native-elements";
 
 const PizzaItem = (props) => {
   const deletePizza = (e, pizzaid) => {
