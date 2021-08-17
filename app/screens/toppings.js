@@ -81,6 +81,7 @@ export default function Toppings({ route, navigation }) {
       .then(function (response) {
         response.json().then(function (data) {
           console.log(data);
+          setToppings(data.toppings);
           setLoad(false);
         });
       })
