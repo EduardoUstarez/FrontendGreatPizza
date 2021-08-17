@@ -62,19 +62,10 @@ export default function Pizzas({ navigation }) {
       });
   };
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "center",
-    },
-  });
-
   return (
     <View>
       {load ? (
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="#0000ff" />
-        </View>
+        <ActivityIndicator size="large" color="#0000ff" />
       ) : (
         <View>
           {pizzas.map((l, i) => (
