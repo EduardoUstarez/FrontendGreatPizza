@@ -40,8 +40,12 @@ export default function Toppings({ route, navigation }) {
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
-        setToppings(data.toppings);
-        setLoad(false);
+        if (data.correct) {
+          setToppings(data.toppings);
+          setLoad(false);
+        } else {
+          //Manage error
+        }
       });
   };
 
@@ -86,12 +90,18 @@ export default function Toppings({ route, navigation }) {
       .then(function (response) {
         response.json().then(function (data) {
           console.log(data);
-          setToppings(data.toppings);
+          if (data.correct) {
+            setToppings(data.toppings);
+          } else {
+            //Manage error
+          }
+
           setLoad(false);
         });
       })
       .catch(function (err) {
         console.log("Error : ", err);
+        setLoad(false);
       });
   };
 
