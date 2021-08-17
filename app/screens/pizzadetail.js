@@ -12,7 +12,7 @@ export default function Pizzadetail({ route, navigation }) {
   useEffect(() => {
     let isMounted = true; // note mutable flag
 
-    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/" + pizzaid)
+    fetch(global.config.url + "GetPizza/" + pizzaid)
       .then((response) => response.json())
       .then(function (data) {
         if (isMounted) {
@@ -26,7 +26,7 @@ export default function Pizzadetail({ route, navigation }) {
   }, []);
 
   const loadData = async () => {
-    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/" + pizzaid)
+    fetch(global.config.url + "GetPizza/" + pizzaid)
       .then((response) => response.json())
       .then(function (data) {
         setDetail(data);
@@ -37,7 +37,7 @@ export default function Pizzadetail({ route, navigation }) {
   const deleteToppingFromPizza = async (pizzaid, toppingid) => {
     setLoad(true);
 
-    fetch("http://192.168.0.13/GreatPizza.API/main/DeleteToppingFromPizza/", {
+    fetch(global.config.url + "DeleteToppingFromPizza/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
