@@ -19,8 +19,12 @@ export default function Pizzas({ navigation }) {
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
-        setPizzas(data.pizzas);
-        setLoad(false);
+        if (data.correct) {
+          setPizzas(data.pizzas);
+          setLoad(false);
+        } else {
+          //Manage error
+        }
       });
   };
 
@@ -33,8 +37,12 @@ export default function Pizzas({ navigation }) {
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
-        setPizzas(data.pizzas);
-        setLoad(false);
+        if (data.correct) {
+          setPizzas(data.pizzas);
+          setLoad(false);
+        } else {
+          //Manage error
+        }
       });
   };
 
