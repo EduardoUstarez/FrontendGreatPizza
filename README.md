@@ -8,6 +8,11 @@ The frontend of Great Pizza test were developed using:
 * React native elements
 * Git flow
 
+List of Pizzas                       |  Detail of the pizza          |   List of toppings
+:-----------------------------------:|:-----------------------------:|---------------------------------
+![](https://github.com/EduardoUstarez/datasharing/blob/master/pizzas.jpg)  |  ![](https://github.com/EduardoUstarez/datasharing/blob/master/pizzatopping.jpg) | ![](https://github.com/EduardoUstarez/datasharing/blob/master/toppings.jpg)
+
+
 
 ![List of pizzas](https://github.com/EduardoUstarez/datasharing/blob/master/pizzas.jpg)
 
