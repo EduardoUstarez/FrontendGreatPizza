@@ -17,7 +17,11 @@ export default function Pizzadetail({ route, navigation }) {
     fetch(global.config.url + "GetPizza/" + pizzaid)
       .then((response) => response.json())
       .then(function (data) {
-        setDetail(data);
+        if (data.correct) {
+          setDetail(data);
+        } else {
+          //Manage error
+        }
         setLoad(false);
       });
   };
@@ -39,12 +43,18 @@ export default function Pizzadetail({ route, navigation }) {
       .then(function (response) {
         response.json().then(function (data) {
           console.log(data);
-          setDetail(data);
+          if (data.correct) {
+            setDetail(data);
+          } else {
+            //Manage error
+          }
+
           setLoad(false);
         });
       })
       .catch(function (err) {
         console.log("Error : ", err);
+        setLoad(false);
       });
   };
 
