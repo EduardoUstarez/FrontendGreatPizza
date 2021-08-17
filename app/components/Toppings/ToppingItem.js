@@ -20,13 +20,8 @@ const ToppingItem = (props) => {
         bottomDivider
         onPress={() => {
           addToppingToPizza(props.pizzaid, props.topping.toppingid);
-          props.navigation.navigate({
-            name: "PizzaDetail",
-            params: {
-              toppingid: props.topping.toppingid,
-              pizzaid: props.pizzaid,
-            },
-            merge: true,
+          props.navigation.push("PizzaDetail", {
+            pizzaid: props.pizzaid,
           });
         }}
       >
