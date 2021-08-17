@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ScrollView, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ListItem, Avatar, Button, Icon, Input } from "react-native-elements";
@@ -64,7 +64,7 @@ export default function Pizzas({ navigation }) {
   };
 
   return (
-    <View>
+    <ScrollView>
       {load ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
@@ -90,6 +90,6 @@ export default function Pizzas({ navigation }) {
           <Button title="Add Pizza" onPress={addPizza} />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
