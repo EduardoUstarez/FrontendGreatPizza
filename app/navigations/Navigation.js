@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Pizzas from "../screens/pizzas";
 import Pizzadetail from "../screens/pizzadetail";
+import Toppings from "../screens/toppings";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,11 @@ function App() {
           name="PizzaDetail"
           component={Pizzadetail}
           options={{ title: "Detail of the Pizza" }}
+        />
+        <Stack.Screen
+          name="Toppings"
+          component={Toppings}
+          options={{ title: "List of toppings" }}
         />
       </Stack.Navigator>
     </NavigationContainer>
