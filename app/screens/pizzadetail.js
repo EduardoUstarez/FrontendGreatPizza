@@ -10,19 +10,7 @@ export default function Pizzadetail({ route, navigation }) {
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
-    let isMounted = true; // note mutable flag
-
-    fetch(global.config.url + "GetPizza/" + pizzaid)
-      .then((response) => response.json())
-      .then(function (data) {
-        if (isMounted) {
-          setDetail(data);
-          setLoad(false);
-        }
-      });
-    return () => {
-      isMounted = false;
-    }; // cleanup toggles value, if unmounted
+    loadData();
   }, []);
 
   const loadData = async () => {
