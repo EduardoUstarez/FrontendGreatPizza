@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, ActivityIndicator } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  View,
+  Text,
+  ActivityIndicator,
+} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ListItem, Avatar, Button, Icon, Input } from "react-native-elements";
@@ -97,7 +103,7 @@ export default function Toppings({ route, navigation }) {
   });
 
   return (
-    <View>
+    <ScrollView>
       {load ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
@@ -125,6 +131,6 @@ export default function Toppings({ route, navigation }) {
           <Button title="Add Topping" onPress={addTopping} />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }

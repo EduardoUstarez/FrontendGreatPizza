@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, ActivityIndicator } from "react-native";
+import { ScrollView, View, StyleSheet, ActivityIndicator } from "react-native";
 import { ListItem, Avatar, Text, Icon, Button } from "react-native-elements";
 
 import PizzaToppingItem from "../components/PizzaDetail/PizzaToppingItem";
@@ -59,7 +59,7 @@ export default function Pizzadetail({ route, navigation }) {
   });
 
   return (
-    <View>
+    <ScrollView>
       {load ? (
         <View>
           <ActivityIndicator size="large" color="#0000ff" />
@@ -88,6 +88,6 @@ export default function Pizzadetail({ route, navigation }) {
           />
         </View>
       )}
-    </View>
+    </ScrollView>
   );
 }
