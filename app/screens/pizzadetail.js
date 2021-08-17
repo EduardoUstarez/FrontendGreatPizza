@@ -8,16 +8,25 @@ export default function Pizzadetail({ route, navigation }) {
   const [detail, setDetail] = useState({});
 
   useEffect(() => {
-    loadData();
-  }, []);
+    let isMounted = true; // note mutable flag
 
-  const loadData = async () => {
-    console.log("id");
-    console.log(pizzaid);
     fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/" + pizzaid)
       .then((response) => response.json())
       .then(function (data) {
-        console.log(data);
+        if (isMounted) {
+          setDetail(data);
+          setLoad(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    }; // cleanup toggles value, if unmounted
+  }, []);
+
+  const loadData = async () => {
+    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizza/" + pizzaid)
+      .then((response) => response.json())
+      .then(function (data) {
         setDetail(data);
         setLoad(false);
       });
@@ -28,11 +37,6 @@ export default function Pizzadetail({ route, navigation }) {
       flex: 1,
       justifyContent: "center",
     },
-    horizontal: {
-      flexDirection: "row",
-      justifyContent: "space-around",
-      padding: 0,
-    },
     txtTitle: {
       textAlign: "center",
     },
@@ -41,7 +45,7 @@ export default function Pizzadetail({ route, navigation }) {
   return (
     <View>
       {load ? (
-        <View style={[styles.container, styles.horizontal]}>
+        <View style={styles.container}>
           <ActivityIndicator size="large" color="#0000ff" />
         </View>
       ) : (
@@ -62,8 +66,12 @@ export default function Pizzadetail({ route, navigation }) {
             </ListItem>
           ))}
           <Button
-            title="Add new Topping"
-            onPress={() => navigation.navigate("PizzaDetail")}
+            title="Add Topping"
+            onPress={() =>
+              navigation.navigate("Toppings", {
+                pizzaid: pizzaid,
+              })
+            }
           />
         </View>
       )}
