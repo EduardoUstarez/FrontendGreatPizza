@@ -32,6 +32,32 @@ export default function Pizzadetail({ route, navigation }) {
       });
   };
 
+  const deleteToppingFromPizza = async (pizzaid, toppingid) => {
+    setLoad(true);
+
+    fetch("http://192.168.0.13/GreatPizza.API/main/DeleteToppingFromPizza/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        pizzaid: pizzaid,
+        toppingid: toppingid,
+      }),
+    })
+      .then(function (response) {
+        response.json().then(function (data) {
+          console.log(data);
+          setDetail(data);
+          setLoad(false);
+        });
+      })
+      .catch(function (err) {
+        console.log("Error : ", err);
+      });
+  };
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -63,6 +89,15 @@ export default function Pizzadetail({ route, navigation }) {
               <ListItem.Content>
                 <ListItem.Title>{l.description}</ListItem.Title>
               </ListItem.Content>
+              <Icon
+                raised
+                name="trash"
+                type="font-awesome-5"
+                color="#f50"
+                onPress={(e) => {
+                  deleteToppingFromPizza(pizzaid, l.toppingid);
+                }}
+              />
             </ListItem>
           ))}
           <Button
