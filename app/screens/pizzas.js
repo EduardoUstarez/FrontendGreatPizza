@@ -15,7 +15,7 @@ export default function Pizzas({ navigation }) {
   }, []);
 
   const loadData = async () => {
-    fetch("http://192.168.0.13/GreatPizza.API/main/GetPizzas/")
+    fetch(global.config.url + "GetPizzas/")
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
@@ -27,7 +27,7 @@ export default function Pizzas({ navigation }) {
   const deletePizza = async (e, pizzaid) => {
     e.stopPropagation();
     setLoad(true);
-    fetch("http://192.168.0.13/GreatPizza.API/main/Deletepizza/" + pizzaid, {
+    fetch(global.config.url + "Deletepizza/" + pizzaid, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -41,7 +41,7 @@ export default function Pizzas({ navigation }) {
   const addPizza = async () => {
     setLoad(true);
 
-    fetch("http://192.168.0.13/GreatPizza.API/main/AddPizza/", {
+    fetch(global.config.url + "AddPizza/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

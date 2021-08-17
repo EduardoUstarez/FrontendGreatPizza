@@ -17,7 +17,7 @@ export default function Toppings({ route, navigation }) {
   }, []);
 
   const loadData = async () => {
-    fetch("http://192.168.0.13/GreatPizza.API/main/GetToppings/")
+    fetch(global.config.url + "GetToppings/")
       .then((response) => response.json())
       .then(function (data) {
         setToppings(data.toppings);
@@ -28,12 +28,9 @@ export default function Toppings({ route, navigation }) {
   const deleteTopping = async (e, toppingid) => {
     e.stopPropagation();
     setLoad(true);
-    fetch(
-      "http://192.168.0.13/GreatPizza.API/main/Deletetopping/" + toppingid,
-      {
-        method: "DELETE",
-      }
-    )
+    fetch(global.config.url + "Deletetopping/" + toppingid, {
+      method: "DELETE",
+    })
       .then((response) => response.json())
       .then(function (data) {
         console.log(data);
@@ -45,7 +42,7 @@ export default function Toppings({ route, navigation }) {
   const addToppingToPizza = async (pizzaid, toppingid) => {
     setLoad(true);
 
-    fetch("http://192.168.0.13/GreatPizza.API/main/AddToppingToPizza", {
+    fetch(global.config.url + "AddToppingToPizza/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -70,7 +67,7 @@ export default function Toppings({ route, navigation }) {
   const addTopping = async () => {
     setLoad(true);
 
-    fetch("http://192.168.0.13/GreatPizza.API/main/AddTopping", {
+    fetch(global.config.url + "AddTopping/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
